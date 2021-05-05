@@ -1,0 +1,14 @@
+.navbar{
+	background-color: #353839;
+}
+.navbar-font{
+	font-family: Yellowtail;
+	font-size: 30px;
+}
+body{
+	 font-family: Nunito, sans-serif;
+	 color:#1c1c1c;
+}
+h1,h2,h3{
+	font-family: Asap, sans-serif;
+	 color:#000000;

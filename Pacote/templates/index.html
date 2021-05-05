@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+
+{% block assunto %}
+    <link rel="stylesheet" type="text/css" href="/static/css/style.css">
+{% endblock %}
+
+{% block titulo %}LocBike{% endblock %}
+
+{% block conteudo %}
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+            <div class="container-fluid">
+              <a class="navbar-brand navbar-font" href="#">LockBike</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/cadastro">Cadastre-se</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/login">Login</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#serviços">Serviços</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#contato">Entre em contato</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/catalogo">Catálogo</a>
+
+                </ul>
+              </div>
+            </div>
+    </nav>
+
+
+    <header id="topo">
+	    <h1>Aluguel de Bikes</h1>
+	    <p>Em tempos de pandemia o que mais queremos é nos cuidar, certo? Porém não podemos deixar a saúde física de lado, com a nossa equipe você consegue juntar a praticidade do aluguel online, com a facilidade de ter uma bike pra laser em qualquer lugar.</p>
+
+    </header>
+    <section id="sobre">
+	    <h2>Sobre</h2>
+	    <p>Nosso projeto de aluguel de bicicletas, tem como objetivo principal facilitar a vida saudável de todos. Além de contribuir com o meio ambiente, andar de bicicleta é econômico e também traz benefícios para a saúde e o bem-estar de muita gente que, apesar de enfrentar um cenário desafiador no que diz respeito à segurança e infraestrutura, adotou as magrelas como principal meio de locomoção.</p>
+    </section>
+    <section id="serviços">
+	    <h2>Serviços</h2>
+	    <div>
+
+		    <img src="/static/img/p3.jpg" alt="Bicicleta Esportiva">
+		    <h3>Bikes Esportivas</h3>
+		    <p>Alugue uma bike que combine com seu estilo ou sua vida cotidiana, combinando o estilo arrojado de uma bicicleta </p>
+	    </div>
+	    <div>
+
+		    <img src="/static/img/casual.png" alt="Bicicleta Casual" >
+		    <h3>Bicicletas Casuais</h3>
+		    <p>Alugue uma bike que para ajudar no seu cotidiano, uma bicicleta simples, mas que combina custo-benefício com praticidade.</p>
+
+	    </div>
+	    <div>
+
+		    <img src="/static/img/trabalho.png" alt="Bicicleta Bagageira" width="590" height="340">
+		    <h3>Bicicletas para Trabalho</h3>
+		    <p>Alugue uma bicicleta para facilitar sua locomoção com materiais de trabalho, com as bicicletas da LockBike voce mescla conforto com armazenamento de todo o seu equipamento.</p>
+
+	    </div>
+
+    </section>
+    <section id="fotos">
+        <h2>Bikes para todos os momentos</h2>
+        <img src="/static/img/cidade.jpg" alt="urbano">
+        <img src="/static/img/nevoa.jpg" alt="nevoeiro">
+        <img src="/static/img/predios.jpg" alt="barzinho">
+    </section>
+    <section id="contato">
+	    <h2>Contato</h2>
+	    <p>Vem falar com a gente!</p>
+
+
+	    <div>
+	        <img src="/static/img/tel.png" alt="telefone">
+	        <p><a href="tel:40028922">4002-8922</a></p>
+	    </div>
+        <div>
+	        <img src="/static/img/mail.png" alt="email">
+	        <p><a href="mailto:lockbike@gmail.com">lockbike@gmail.com</a></p>
+	    </div>
+        <footer>
+	        <a href="#topo">VOLTAR</a>
+	        <p>Desenvolvido por Ana Gabrielle, Lucas, Jaqueline e Dario </p>
+        </footer>
+
+    </section>
+{% endblock %}
