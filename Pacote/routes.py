@@ -1,4 +1,4 @@
-from flask import current_app as app, render_template, request
+from flask import current_app as app, render_template, request, redirect
 from Pacote import db
 from Pacote.entidades import usuario
 
@@ -66,24 +66,27 @@ def catalogo():
 def login():
     return render_template("login.html")
 
-@app.route("/cadastro")
+@app.route("/cadastro" , methods=['GET', 'POST']) # Adicionei método GET
 def cadastro():
-    nome = request.form ['name']
-    sobrenome = request.form ['lastname']
-    email = request.form ['email']
-    senha = request.form ['password']
-    confirma_senha = request.form ['passconfirmation']
+    if request.method == 'POST': # a parte abaixo só quando for formulário.
+        nome = request.form ['name']
+        sobrenome = request.form ['lastname']
+        email = request.form ['email']
+        senha = request.form ['password']
+        confirma_senha = request.form ['passconfirmation']
 
-    if (senha == confirma_senha):
+        if (senha == confirma_senha):
             novo = usuario()
             novo.name = nome
-            novo.sobrenome = sobrenome
+            novo.lastname = sobrenome
             novo.email = email
-            novo.senha = senha
+            novo.password = senha
 
 
             db.session.add(novo)
             db.session.commit()
+            return redirect('/login')
+    # quando for GET enviar o template.
     return render_template("cadastro.html")
 
 
