@@ -12,14 +12,14 @@ box-sizing: border-box;
 font-family: helvetica, sans-serif;
 color: black;
 border: none;
-  
+
 }
 
 input,label {
   display:block;
   width: 100%;
   }
-  
+
 input:focus, label:focus {
   outline: none;
 }
@@ -42,9 +42,9 @@ a {
   #main-container h1 {
     text-align: center;
     margin-bottom: 25px;
-    font-size: 1.6rem; 
+    font-size: 1.6rem;
   }
-  
+
 form {
   display: flex;
   flex-wrap: wrap;
@@ -87,17 +87,17 @@ input[type="submit"] {
   border: none;
   border-radius: 20px;
 
-  cursor: pointer;
+  cursos: pointer;
   }
   #agreement {
     margin-right: 5px;
   }
-  
+
   #agreement, #agreement-label {
     display: inline-block;
     width: auto;
   }
-  
+
 
   .error-validation {
     color: #FF1A1A;
@@ -105,21 +105,21 @@ input[type="submit"] {
     top: 57px;
     font-size: .8rem;
   }
-  
+
   .template {
     display: none;
   }
-  p.botao a { 
-    position: relative; 	
+  p.botao a {
+    position: relative;
     top: -15px;
     padding:10px 20px;
     text-decoration: none;
-    text-align:center;	
+    text-align:center;
     color:white;
-    background: #008080;	
+    background: #008080;
     border-radius: 20px;
-    width:450px;  
-    height:35px;	
-    display:block;	
+    width:450px;
+    height:35px;
+    display:block;
     font-size: .9rem;
 }

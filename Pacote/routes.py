@@ -1,4 +1,6 @@
 from flask import current_app as app, render_template, request
+from Pacote import db
+from Pacote.entidades import usuario
 
 
 
@@ -66,9 +68,27 @@ def login():
 
 @app.route("/cadastro")
 def cadastro():
+    nome = request.form ['name']
+    sobrenome = request.form ['lastname']
+    email = request.form ['email']
+    senha = request.form ['password']
+    confirma_senha = request.form ['passconfirmation']
+
+    if (senha == confirma_senha):
+            novo = usuario()
+            novo.name = nome
+            novo.sobrenome = sobrenome
+            novo.email = email
+            novo.senha = senha
+
+
+            db.session.add(novo)
+            db.session.commit()
     return render_template("cadastro.html")
+
 
 @app.route("/cadastrodebicicletas")
 def cadastrodebicicletas():
     return render_template("cadastrodebicicletas.html")
+
 
