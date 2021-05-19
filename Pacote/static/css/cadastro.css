@@ -5,6 +5,9 @@
   font-family: Yellowtail;
   font-size: 30px;
 }
+body {
+    background-image: url(https://cdn.pixabay.com/photo/2013/03/19/18/23/mountain-biking-95032__340.jpg);
+}
 *{
 margin: 0;
 padding: 0;
@@ -12,7 +15,6 @@ box-sizing: border-box;
 font-family: helvetica, sans-serif;
 color: black;
 border: none;
-
 }
 
 input,label {

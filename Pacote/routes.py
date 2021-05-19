@@ -62,9 +62,6 @@ def inicio():
 def catalogo():
     bicicletas=[1,2,3,4,5,6,7]
     return render_template("catalogo.html", bicicletas=bicicletas, bic_mock=bic_mock)
-@app.route("/login")
-def login():
-    return render_template("login.html")
 
 @app.route("/cadastro" , methods=['GET', 'POST']) # Adicionei método GET
 def cadastro():
@@ -89,9 +86,33 @@ def cadastro():
     # quando for GET enviar o template.
     return render_template("cadastro.html")
 
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    if request.method == 'GET':
+
+       return render_template("login.html")
+
+
+    elif request.method == 'POST':
+        raise
+        email_log = request.form ['email']
+        senha_log = request.form ['password']
+
+        tem = usuario.query.filter_by(email=email_log).first()
+
+        if tem is None:
+            return 'Usuário não existe'
+        else:
+            if tem.senha == senha_log:
+                return render_template('teste.html')
 
 @app.route("/cadastrodebicicletas")
 def cadastrodebicicletas():
     return render_template("cadastrodebicicletas.html")
+
+
+@app.route("/teste", methods=['POST'])
+def teste():
+    return render_template("teste.html")
 
 
