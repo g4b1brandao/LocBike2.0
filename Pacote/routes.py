@@ -86,25 +86,25 @@ def cadastro():
     # quando for GET enviar o template.
     return render_template("cadastro.html")
 
-@app.route('/login', methods=['GET', 'POST'])
+@app.route('/login')
 def login():
-    if request.method == 'GET':
-
        return render_template("login.html")
 
 
-    elif request.method == 'POST':
-        raise
+
+@app.route('/login_tent', methods=['POST'])
+def login_tent ():
         email_log = request.form ['email']
-        senha_log = request.form ['password']
+        senha_log = request.form ['senha']
 
         tem = usuario.query.filter_by(email=email_log).first()
 
         if tem is None:
             return 'Usuário não existe'
         else:
-            if tem.senha == senha_log:
-                return render_template('teste.html')
+           if tem.password == senha_log:
+               return render_template('teste.html')
+
 
 @app.route("/cadastrodebicicletas")
 def cadastrodebicicletas():
