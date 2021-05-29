@@ -1,17 +1,24 @@
-from Pacote import db
+from Pacote import db, loginmanager
+from flask_login import UserMixin
 
 
-class usuario(db.Model):
+class usuario(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key = True)
     email = db.Column(db.String(100), nullable=False, unique=True)
     name = db.Column(db.String(50), nullable = False)
     lastname = db.Column(db.String(50), nullable = False)
     password = db.Column(db.String(10), nullable = False)
 
-#    def __init__(self,name,lastname,password,email):
-#        self.name = name
-#        self.lastname = lastname
-#        self.email = email
-#        self.password = password
+    cadastrodebikes = db.relationship('cadastrodebikes', backref='usuario', lazy=True)
 
+class cadastrodebikes(db.Model):
+    id = db.Column(db.Integer, primary_key = True)
+    Address = db.Column(db.String(100), nullable = False)
+    Cidade = db.Column(db.String(20), nullable = False)
+    estado = db.Column(db.String(50), nullable = False)
+    cep = db.Column(db.String(9), nullable = False)
+    modelo = db.Column(db.String(100), nullable = False)
+    modalidade = db.Column(db.String(20), nullable = False)
+    aro_e_machas = db.Column(db.String(20), nullable = False)
 
+    id_usuario = db.Column(db.Integer, db.ForeignKey("usuario.id"), nullable = False)

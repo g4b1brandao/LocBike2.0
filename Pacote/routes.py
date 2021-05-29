@@ -1,8 +1,11 @@
 from flask import current_app as app, render_template, request, redirect
-from Pacote import db
-from Pacote.entidades import usuario
+from Pacote import db, loginmanager
+from Pacote.entidades import usuario , cadastrodebikes
+
+from flask_login import login_user, logout_user, login_required
 
 
+loginmanager.login_view = '/login'
 
 bic_mock = [
     {
@@ -55,10 +58,12 @@ bic_mock = [
     },
 ]
 
+
 @app.route("/")
 def inicio():
 	return render_template("index.html")
 @app.route("/catalogo")
+@login_required
 def catalogo():
     bicicletas=[1,2,3,4,5,6,7]
     return render_template("catalogo.html", bicicletas=bicicletas, bic_mock=bic_mock)
@@ -103,16 +108,51 @@ def login_tent ():
             return 'Usuário não existe'
         else:
            if tem.password == senha_log:
-               return render_template('teste.html')
+               return render_template('catalogo.html')
 
-
-@app.route("/cadastrodebicicletas")
+@app.route("/cadastrodebicicletas", methods=['GET', 'POST'])
 def cadastrodebicicletas():
+    if request.method == 'POST':
+        enderecoderetirada = request.form ['Address']
+        Cidade = request.form ['Cidade']
+        estado = request.form ['Estado']
+        cep = request.form ['CEP']
+        modelo = request.form ['Modelo']
+        modalidade = request.form ['Modalidade']
+        aro_e_machas = request.form ['Aro_e_Machas']
+
+        novo = cadastrodebikes()
+        novo.Address = enderecoderetirada
+        novo.Cidade =  Cidade
+        novo.estado = estado
+        novo.cep = cep
+        novo.modelo = modelo
+        novo.modalidade = modalidade
+        novo.aro_e_machas = aro_e_machas
+
+        db.session.add(novo)
+        db.session.commit()
+        novo.usuario_id = login_user.id
+        return redirect('/teste2')
     return render_template("cadastrodebicicletas.html")
+
+
 
 
 @app.route("/teste", methods=['POST'])
 def teste():
     return render_template("teste.html")
 
+@app.route("/teste2")
+def teste2():
+    return render_template("teste2.html")
 
+@app.route('/logout')
+@login_required
+def logout():
+    logout_user()
+    return redirect('/')
+
+@loginmanager.user_loader
+def load_user(user_id):
+    return usuario.query.get(user_id)

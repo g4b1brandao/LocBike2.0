@@ -7,6 +7,9 @@
 }
 body {
     background-image: url(https://cdn.pixabay.com/photo/2013/03/19/18/23/mountain-biking-95032__340.jpg);
+    background-repeat:no-repeat;
+    background-size: cover;
+}
 }
 *{
 margin: 0;
