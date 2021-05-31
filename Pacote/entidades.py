@@ -14,11 +14,11 @@ class usuario(db.Model, UserMixin):
 class cadastrodebikes(db.Model):
     id = db.Column(db.Integer, primary_key = True)
     Address = db.Column(db.String(100), nullable = False)
-    Cidade = db.Column(db.String(20), nullable = False)
-    estado = db.Column(db.String(50), nullable = False)
-    cep = db.Column(db.String(9), nullable = False)
-    modelo = db.Column(db.String(100), nullable = False)
-    modalidade = db.Column(db.String(20), nullable = False)
-    aro_e_machas = db.Column(db.String(20), nullable = False)
+    City = db.Column(db.String(20), nullable = False)
+    State = db.Column(db.String(50), nullable = False)
+    CEP = db.Column(db.String(9), nullable = False)
+    Model = db.Column(db.String(100), nullable = False)
+    Modality = db.Column(db.String(20), nullable = False)
+    Aro_e_Machas = db.Column(db.String(20), nullable = False)
 
     id_usuario = db.Column(db.Integer, db.ForeignKey("usuario.id"), nullable = False)

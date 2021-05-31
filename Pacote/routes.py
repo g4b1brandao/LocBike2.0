@@ -1,8 +1,8 @@
-from flask import current_app as app, render_template, request, redirect
+from flask import current_app as app, render_template, request,redirect, session
 from Pacote import db, loginmanager
 from Pacote.entidades import usuario , cadastrodebikes
 
-from flask_login import login_user, logout_user, login_required
+from flask_login import login_user, logout_user, login_required,current_user
 
 
 loginmanager.login_view = '/login'
@@ -87,6 +87,7 @@ def cadastro():
 
             db.session.add(novo)
             db.session.commit()
+            novo.usuario_id = current_user.id
             return redirect('/login')
     # quando for GET enviar o template.
     return render_template("cadastro.html")
@@ -99,40 +100,44 @@ def login():
 
 @app.route('/login_tent', methods=['POST'])
 def login_tent ():
-        email_log = request.form ['email']
+        nome_log = request.form ['name']
         senha_log = request.form ['senha']
 
-        tem = usuario.query.filter_by(email=email_log).first()
+        tem = usuario.query.filter_by(name=nome_log).first()
 
         if tem is None:
             return 'Usuário não existe'
         else:
            if tem.password == senha_log:
+               login_user(tem)
+               session['user_name'] = nome_log
                return render_template('catalogo.html')
 
 @app.route("/cadastrodebicicletas", methods=['GET', 'POST'])
+@login_required
 def cadastrodebicicletas():
     if request.method == 'POST':
         enderecoderetirada = request.form ['Address']
-        Cidade = request.form ['Cidade']
-        estado = request.form ['Estado']
+        cidade = request.form ['City']
+        estado = request.form ['State']
         cep = request.form ['CEP']
-        modelo = request.form ['Modelo']
-        modalidade = request.form ['Modalidade']
+        modelo = request.form ['Model']
+        modalidade = request.form ['Modality']
         aro_e_machas = request.form ['Aro_e_Machas']
 
         novo = cadastrodebikes()
         novo.Address = enderecoderetirada
-        novo.Cidade =  Cidade
-        novo.estado = estado
-        novo.cep = cep
-        novo.modelo = modelo
-        novo.modalidade = modalidade
-        novo.aro_e_machas = aro_e_machas
+        novo.City =  cidade
+        novo.State = estado
+        novo.CEP = cep
+        novo.Model = modelo
+        novo.Modality = modalidade
+        novo.Aro_e_Machas = aro_e_machas
+        novo.id_usuario = current_user.id
 
         db.session.add(novo)
         db.session.commit()
-        novo.usuario_id = login_user.id
+
         return redirect('/teste2')
     return render_template("cadastrodebicicletas.html")
 
@@ -149,7 +154,7 @@ def teste2():
 
 @app.route('/logout')
 @login_required
-def logout():
+def sair():
     logout_user()
     return redirect('/')
 
