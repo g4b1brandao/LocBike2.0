@@ -1,11 +1,18 @@
-from flask import current_app as app, render_template, request,redirect, session
+from flask import current_app as app, render_template, request,redirect, session, url_for
 from Pacote import db, loginmanager
+import os
+from werkzeug.utils import secure_filename
 from Pacote.entidades import usuario , cadastrodebikes
 
 from flask_login import login_user, logout_user, login_required,current_user
 
 
 loginmanager.login_view = '/login'
+ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'}
+
+def allowed_file(filename):
+    return '.' in filename and \
+           filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 bic_mock = [
     {
@@ -125,6 +132,22 @@ def cadastrodebicicletas():
         modalidade = request.form ['Modality']
         aro_e_machas = request.form ['Aro_e_Machas']
 
+        img_bicicleta = ''
+        if 'file' not in request.files:
+            session['mensagem'] = 'Não havia arquivo no envio'
+            return redirect(request.url)
+        file = request.files['file']
+        if file.filename == '':
+             session['mensagem'] = 'Não havia arquivo para upload'
+             return redirect(request.url)
+        if file and allowed_file(file.filename):
+             img_bicicleta = secure_filename(file.filename)
+
+             imgs = os.listdir(app.config['UPLOAD_FOLDER'])
+             img_bicicleta= f'{len(imgs)+1:08}.{img_bicicleta.rsplit(".", 1)[1].lower()}'
+
+             file.save(os.path.join(app.config['UPLOAD_FOLDER'],img_bicicleta))
+
         novo = cadastrodebikes()
         novo.Address = enderecoderetirada
         novo.City =  cidade
@@ -133,7 +156,9 @@ def cadastrodebicicletas():
         novo.Model = modelo
         novo.Modality = modalidade
         novo.Aro_e_Machas = aro_e_machas
+        novo.img_bicicleta = img_bicicleta
         novo.id_usuario = current_user.id
+
 
         db.session.add(novo)
         db.session.commit()
@@ -151,6 +176,27 @@ def teste():
 @app.route("/teste2")
 def teste2():
     return render_template("teste2.html")
+
+@app.route('/bikesdepasseios')
+@login_required
+def bikesdepasseios():
+       return render_template("bikesdepasseio.html")
+
+@app.route('/bikescasuais')
+@login_required
+def bikescasuais():
+       return render_template("bikescasuais.html")
+
+@app.route('/bikesesportivas')
+@login_required
+def bikesesportivas():
+       return render_template("bikesesportivas.html")
+
+@app.route('/barralateral')
+def barralateral():
+       return render_template("barralateral.html")
+
+
 
 @app.route('/logout')
 @login_required

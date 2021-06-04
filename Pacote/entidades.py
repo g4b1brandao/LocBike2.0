@@ -20,5 +20,6 @@ class cadastrodebikes(db.Model):
     Model = db.Column(db.String(100), nullable = False)
     Modality = db.Column(db.String(20), nullable = False)
     Aro_e_Machas = db.Column(db.String(20), nullable = False)
+    img_bicicleta = db.Column(db.String(100), default="")
 
     id_usuario = db.Column(db.Integer, db.ForeignKey("usuario.id"), nullable = False)
