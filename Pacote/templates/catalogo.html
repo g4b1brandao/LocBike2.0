@@ -1,199 +1,135 @@
 {% extends 'base.html' %}
 
 {% block assunto %}
+   <meta charset="utf-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="/static/css/barra.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="/static/css/style.css">
+
 {% endblock %}
 
 {% block titulo %}LocBike{% endblock %}
-
 {% block conteudo %}
 <nav class="navbar navbar-expand-lg navbar-dark ">
             <div class="container-fluid">
               <a class="navbar-brand navbar-font" href="#">LockBike</a>
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-              <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                  <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/">Home</a>
+             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Alterna navegação">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="/">Home <span class="sr-only">(Página atual)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Olá, {{session.user_name}}</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="/cadastrodebicicletas">Cadastro de Bikes</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Catálogo
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="/bikescasuais">Bikes Casuais</a>
+          <a class="dropdown-item" href="/bikesesportivas">Bikes Esportivas</a>
+          <a class="dropdown-item" href="/bikesdepasseios">Bikes de Passeio</a>
+        </div>
+      </li>
+    </ul>
+    <div class="menu">
 
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">Olá, {{session.user_name}}</a>
-
-                  </li>
-
-                  <
-
-                  </li>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/cadastrodebicicletas">Cadastro de Bikes</a>
-
-                  </li>
-                   </li>
 
 
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/logout">Sair</a>
 
-                  </li>
 
-                </ul>
+        <!-- Botão de Fechar -->
+        <!-- Pode ser trocado por uma imagem ou icone -->
 
-              </div>
-            </div>
-          </nav>
-          <div class="container">
+        <div class="icon-close">
+            <h1>X</h1>
+        </div>
+
+
+    <p3> <img src="/static/img/Perfil.png.png" width="60" height="60" align="left"> </p3>
+<li class="nav-item">
+        <a1 class="nav-user" href="#"> {{session.user_name}}</a1>
+      </li>
+      <br />
+        <!-- Menu -->
+        <ul>
+
+   <li><a href="#">Suas bikes alugadas</a></li>
+    <li><a href="#">Suas bikes cadastradas</a></li>
+     <li><a href="#">Atualizar seus dados</a></li>
+     <br>
+          <br>
+               <br>
+                    <br>
+                         <br>
+                              <br>
+                                   <br>
+                                     <br>
+                                       <br>
+                                         <br>
+                                           <br>
+                                             <br>
+                                               <br>
+                                                 <br>
+                                                   <br>
+                                                     <br
+                                                     <br>
+                                                       <br>
+                                                         <br>
+                                                           <br>
+                                                             <br>
+
+
+
+
+
+      <li><a class="nav-link active" aria-current="page" href="/logout">SAIR</a></li>
+  </ul>
+
+    </div>
+    <!-- Corpo do Site -->
+    <div class="container">
+        <div class="icon-menu">
+<img class="imgperfil" src="/static/img/Perfil.png.png">
+
+        </div>
+    </div>
+
+    <script src="/static/js/barra.js" ></script>
+  </div>
+  </div>
+</nav>
+
+ <div class="container">
           <div class="row" class="container">
 
+{% for bicicleta in dados %}
 <div class="card" style="width: 18rem;">
-  <img src="https://static.netshoes.com.br/produtos/bicicleta-aro-29-ksw-shimano-24-vel-a-disco-ltx-hidraulica/50/CGY-0142-050/CGY-0142-050_zoom1.jpg?ts=1612438028&" class="card-img-top" alt="KSW 29">
-  <div class="card-body">
-    <h5 class="card-title">Bicicleta Aro 29 Ksw </h5>
-    <p class="card-text">Nome: Bicicleta Aro 29 Ksw<br>
-						 Gênero: Unissex<br>
-						 Modalidade: Mountain Bike<br>
-						 Aro: 29<br>
-						 Marchas: 24<br>
-						 Suspensão: Dianteira<br>
-						 Indicado para: Praticante<br>
-						 Marca: KSW</p>
-    <a href="#" class="btn btn-primary">Alugar</a>
-  </div>
-</div><div class="card" style="width: 18rem;">
-  <img src="https://static.netshoes.com.br/produtos/bicicleta-aro-29-gt-sprint-mx1-aluminio-freio-a-disco-e-suspensao/91/PGU-0003-791/PGU-0003-791_zoom1.jpg?ts=1614963890&" class="card-img-top" alt="MX1">
-  <div class="card-body">
-    <h5 class="card-title">Bicicleta GT Sprint MX1 </h5>
-    <p class="card-text">Nome: Bicicleta GT Sprint MX1<br>
-Gênero: Unissex<br>
-Modalidade: Passeio<br>
-Aro: 29<br>
-Marchas: 21<br>
-Suspensão: Dianteira<br>
-Indicado para: Praticante<br>
-Marca: GTSPRINT<br></p>
-    <a href="#" class="btn btn-primary">Alugar</a>
-  </div>
-</div><div class="card" style="width: 18rem;">
-  <img src="https://static.netshoes.com.br/produtos/bicicleta-south-stark-2021-aro-29-aluminio-freio-a-disco-cambio-importado-24-marchas/08/ACN-0073-108/ACN-0073-108_zoom1.jpg?ts=1604401556&" class="card-img-top" alt="South 2021">
-  <div class="card-body">
-    <h5 class="card-title">South Stark 2021 Aro 29</h5>
-    <p class="card-text">Nome: South Stark 2021<br>
-Gênero: Unissex<br>
-Modalidade: Mountain Bike<br>
-Aro: 29<br>
-Marchas: 24<br>
-Suspensão: Dianteira<br>
-Marca: Southbike</p>
-    <a href="#" class="btn btn-primary">Alugar</a>
-  </div>
-</div><div class="card" style="width: 18rem;">
-  <img src="https://static.netshoes.com.br/produtos/bicicleta-dropp-z3-aro-29-cambios-shimano-24v-cambio-tz-freio-a-disco-mecanico-com-suspensao/34/JWY-0168-234/JWY-0168-234_zoom2.jpg?ts=1600258877&?ims=544xhttps://static.netshoes.com.br/produtos/bicicleta-dropp-z3-aro-29-cambios-shimano-24v-cambio-tz-freio-a-disco-mecanico-com-suspensao/34/JWY-0168-234/JWY-0168-234_zoom2.jpg?ts=1600258877&?ims=1088x" class="card-img-top" alt="KSW 29">
-  <div class="card-body">
-    <h5 class="card-title">Bicicleta Dropp Z3</h5>
-    <p class="card-text">Nome:Dropp Z3 Aro 29<br>
-Gênero: Unissex<br>
-Modalidade: Passeio<br>
-Aro: 29<br>
-Marchas: 24<br>
-Suspensão: Dianteira<br>
-Indicado para: Praticante<br>
-Marca: DROPP</p>
-    <a href="#" class="btn btn-primary">Alugar</a>
-  </div>
-</div>
-</div>
-</div>
-
-
-
-  <div class="container">
-          <div class="row" class="container">
-
-<div class="card" style="width: 18rem;">
-  <img src="https://static.netshoes.com.br/produtos/bicicleta-aro-26-retro-feminina/76/OIH-0009-776/OIH-0009-776_zoom1.jpg?ts=1612977564&" class="card-img-top" alt="Retro">
-  <div class="card-body">
-    <h5 class="card-title">Bicicleta Aro 26 Retro</h5>
-    <p class="card-text">Nome: Bicicleta Aro 26 Retro<br>
-Gênero: Feminino<br>
-Modalidade: Passeio<br>
-Aro: 26<br>
-Marchas: Sem marcha<br>
-Suspensão: Sem Suspensão<br>
-Indicado para: Praticante<br>
-Marca: ROUTE</p>
-    <a href="#" class="btn btn-primary">Alugar</a>
-  </div>
-</div><div class="card" style="width: 18rem;">
-  <img src="https://static.netshoes.com.br/produtos/bicicleta-barra-dupla-aro-26-contra-pedal-kls/16/PAK-0015-016/PAK-0015-016_zoom1.jpg?ts=1616428254&KSW 29">
-  <div class="card-body">
-    <h5 class="card-title">Bicicleta Barra Dupla Aro 26</h5>
-    <p class="card-text">Nome: Bicicleta Barra Dupla<br>
-Gênero: Unissex<br>
-Modalidade: Passeio<br>
-Marchas: Sem marcha<br>
-Suspensão: Sem Suspensão<br>
-Indicado para: Praticante<br>
-Marca: KLS</p>
-    <a href="#" class="btn btn-primary">Alugar</a>
-  </div>
-</div><div class="card" style="width: 18rem;">
-  <img src="https://static.netshoes.com.br/produtos/bicicleta-aro-26-beach-masculina-7v/56/OIH-0016-256/OIH-0016-256_zoom1.jpg?ts=1617024711&" class="card-img-top" alt="South 2021">
-  <div class="card-body">
-    <h5 class="card-title">Bicicleta Aro 26 Beach</h5>
-    <p class="card-text">Nome: Bicicleta Aro 26 Beach<br>
-Gênero: Masculino<br>
-Modalidade: Passeio<br>
-Aro: 26<br>
-Marchas: 7<br>
-Suspensão: Sem Suspensão<br>
-Indicado para: Praticante<br>
-Marca: ROUTE</p>
-    <a href="#" class="btn btn-primary">Alugar</a>
-  </div>
-</div>
-<div class="card" style="width: 18rem;">
-  <img src="https://static.netshoes.com.br/produtos/bicicleta-de-passeio-kls-retro-aro-26-com-freios-v-brake/54/PAK-0007-154/PAK-0007-154_zoom1.jpg?ts=1616414207&" alt="KSW 29">
-  <div class="card-body">
-    <h5 class="card-title">Bicicleta de Passeio KLS</h5>
-    <p class="card-text">Nome: Bicicleta de Passeio KLS<br>
-Gênero: Unissex<br>
-Modalidade: Passeio<br>
-Aro: 24<br>
-Marchas: Sem marcha<br>
-Suspensão: Sem Suspensão<br>
-Indicado para: Praticante<br>
-Marca: KLS </p>
-    <a href="#" class="btn btn-primary">Alugar</a>
-  </div>
-</div>
-
-
-{% for bicicleta in bic_mock %}
-<div class="card" style="width: 18rem;">
-  <img src="https://static.netshoes.com.br/produtos/bicicleta-de-passeio-kls-retro-aro-26-com-freios-v-brake/54/PAK-0007-154/PAK-0007-154_zoom1.jpg?ts=1616414207&" alt="KSW 29">
-  <div class="card-body">
-    <h5 class="card-title">{{bicicleta.title}} </h5>
-    <p class="card-text">Nome: Bicicleta de Passeio KLS<br>
-Gênero: Unissex<br>
-Modalidade: Passeio<br>
-Aro: 24<br>
-Marchas: Sem marcha<br>
-Suspensão: Sem Suspensão<br>
-Indicado para: Praticante<br>
-Marca: KLS </p>
-    <a href="#" class="btn btn-primary">Alugar</a>
+    <img src="https://www.pythonanywhere.com/user/LocBike/files/home/LocBike/LocBike2.0/instance/uploads/{{bicicleta.img_bicicleta}}"/>
+    <div class="card-body">
+    <h5 class="card-title">{{bicicleta.Model}} </h5>
+    <p class="card-text">Marca:{{bicicleta.Marca}}<br>
+Gênero:{{bicicleta.Gender}}<br>
+Modalidade:{{bicicleta.Modality}}<br>
+Aro:{{bicicleta.Aro}}<br>
+Marchas:{{bicicleta.Marchas}}<br>
+Marca: {{bicicleta.Marca}}<br>
+Suspensão:{{bicicleta.Suspensao}}<br>
+Modalidade:{{bicicleta.Modality}} <br>
+Preço da Locação:{{bicicleta.Price}} <br>
+</p>
+    <a href="/alugar" class="btn btn-primary">Alugar</a>
   </div>
 </div>
 
 {% endfor %}
-
-
 </div>
 </div>
-
-
 {% endblock %}

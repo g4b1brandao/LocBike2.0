@@ -1,42 +1,110 @@
 {% extends 'base.html' %}
 
 {% block assunto %}
+<meta charset="utf-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="/static/css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
 {% endblock %}
 
 {% block titulo %}LocBike{% endblock %}
-
 {% block conteudo %}
-<body>
-	 <nav class="navbar navbar-expand-lg navbar-dark ">
+<nav class="navbar navbar-expand-lg navbar-dark ">
             <div class="container-fluid">
               <a class="navbar-brand navbar-font" href="#">LockBike</a>
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-              <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                  <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Alterna navegação">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="/">Home <span class="sr-only">(Página atual)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Olá, {{session.user_name}}</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="/cadastrodebicicletas">Cadastro de Bikes</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Catálogo
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="/bikescasuais">Bikes Casuais</a>
+          <a class="dropdown-item" href="/bikesesportivas">Bikes Esportivas</a>
+          <a class="dropdown-item" href="/bikesdepasseios">Bikes de Passeio</a>
+        </div>
+      </li>
+    </ul>
+    <div class="menu">
 
-                  </li>
 
-                  <li class="nav-item">
-                    <a class="nav-link" href="index.html">Serviços</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="index.html">Entre em contato</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="catalogo.html">Catálogo</a>
-                  </li>
-                  </li>
 
-                </ul>
 
-              </div>
-            </div>
-          </nav>
+
+        <!-- Botão de Fechar -->
+        <!-- Pode ser trocado por uma imagem ou icone -->
+
+        <div class="icon-close">
+            <h1>X</h1>
+        </div>
+
+
+    <p3> <img src="/static/img/Perfil.png.png" width="60" height="60" align="left"> </p3>
+<li class="nav-item">
+        <a1 class="nav-user" href="#"> {{session.user_name}}</a1>
+      </li>
+      <br />
+        <!-- Menu -->
+        <ul>
+
+   <li><a href="/bikescasuais">Suas bikes alugadas</a></li>
+    <li><a href="/bikesesportivas">Suas bikes cadastradas</a></li>
+     <li><a href="/bikesdepasseios">Atualizar seus dados</a></li>
+     <br>
+          <br>
+               <br>
+                    <br>
+                         <br>
+                              <br>
+                                   <br>
+                                     <br>
+                                       <br>
+                                         <br>
+                                           <br>
+                                             <br>
+                                               <br>
+                                                 <br>
+                                                   <br>
+                                                     <br
+                                                     <br>
+                                                       <br>
+                                                         <br>
+                                                           <br>
+                                                             <br>
+
+
+
+
+
+      <li><a class="nav-link active" aria-current="page" href="/logout">SAIR</a></li>
+  </ul>
+
+    </div>
+    <!-- Corpo do Site -->
+    <div class="container">
+        <div class="icon-menu">
+<img class="imgperfil" src="/static/img/Perfil.png.png">
+
+        </div>
+    </div>
+
+    <script src="/static/js/barra.js" ></script>
+  </div>
+  </div>
+</nav>
           <div class="container">
           <div class="row" class="container">
 
@@ -44,59 +112,54 @@
   <img src=" https://static.netshoes.com.br/produtos/bicicleta-aro-24-rebaixada-18-marchas-aco-carbono-ultra-bikes/22/ISL-0026-022/ISL-0026-022_zoom1.jpg?ts=1611395732&" class="card-img-top" alt="Ultra bike">
   <div class="card-body">
     <h5 class="card-title">Bicicleta Gts Feel </h5>
-    <p class="card-text">Nome: Bicicleta Aro 24 Rebaixada<br>
+    <p class="card-text">
+        Marca: Ultra Bikes<br>
 Gênero: Unissex<br>
-Modalidade: Passeio<br>
 Aro: 24<br>
 Marchas: 18<br>
 Suspensão: Sem Suspensão<br>
-Indicado para: Praticante<br>
-Marca: Ultra Bikes</p>
-    <a href="#" class="btn btn-primary">Alugar</a>
+Modalidade: Passeio<br></p>
+    <a href="/alugar" class="btn btn-primary">Alugar</a>
   </div>
 </div>
 <div class="card" style="width: 18rem;">
   <img src="https://static.netshoes.com.br/produtos/bicicleta-aro-24-rebaixada-bicolor-18-marchas-aco-carbono-ultra-bikes/16/ISL-0035-016/ISL-0035-016_zoom1.jpg?ts=1611447728&" alt="rebaixada 2">
   <div class="card-body">
     <h5 class="card-title">Bicicleta Aro 24 Rebaixada</h5>
-    <p class="card-text">Nome: Bicicleta Aro 24 Rebaixada<br>
+    <p class="card-text">Marca: Ultra Bikes<br>
 Gênero: Unissex<br>
-Modalidade: Passeio<br>
 Aro: 24<br>
 Marchas: 18<br>
 Suspensão: Sem Suspensão<br>
-Indicado para: Praticante<br>
-Marca: Ultra Bikes</p>
-    <a href="#" class="btn btn-primary">Alugar</a>
+Modalidade: Passeio<br>
+</p>
+    <a href="/alugar" class="btn btn-primary">Alugar</a>
   </div>
 </div>
 <div class="card" style="width: 18rem;">
   <img src="https://static.netshoes.com.br/produtos/bicicleta-aro-26-vintage-retro-com-cestinha-ultra-bikes-summer/14/ISL-0039-014/ISL-0039-014_zoom1.jpg?ts=1611397362&" class="card-img-top" alt="Vintage">
   <div class="card-body">
     <h5 class="card-title">Bike Vintage Cestinha</h5>
-    <p class="card-text">Nome: Bicicleta Vintage Retrô<br>
+    <p class="card-text">Marca: Ultra Bikes<br>
 Gênero: Unissex<br>
-Modalidade: Passeio<br>
 Aro: 26<br>
 Marchas: Sem marcha<br>
 Suspensão: Sem Suspensão<br>
-Indicado para: Praticante<br>
-Marca: Ultra Bikes</p>
-    <a href="#" class="btn btn-primary">Alugar</a>
+Modalidade: Passeio<br></p>
+    <a href="/alugar" class="btn btn-primary">Alugar</a>
   </div>
 </div><div class="card" style="width: 18rem;">
   <img src="https://static.netshoes.com.br/produtos/bicicleta-aro-26-masculina-18-marchas-aco-carbono-ultra-bikes/18/ISL-0024-018/ISL-0024-018_zoom1.jpg?ts=1611395527&" class="card-img-top" alt="Dropz3">
   <div class="card-body">
     <h5 class="card-title">Bike Aço Carbono</h5>
-    <p class="card-text">Nome: Bicicleta Aço Carbono UltraBikes<br>
-Gênero: Unissex<br>
-Modalidade: Passeio<br>
-Aro: 26<br>
-Marchas: 18<br>
-Suspensão: Sem Suspensão<br>
-Indicado para: Praticante<br>
-Marca: Ultra Bikes</p>
-    <a href="#" class="btn btn-primary">Alugar</a>
+    <p class="card-text">Marca: Ultra Bikes<br>
+    Gênero: Unissex<br>
+    Modalidade: Passeio<br>
+    Aro: 26<br>
+    Marchas: 18<br>
+    Suspensão: Sem Suspensão<br>
+    Modalidade: Passeio<br></p>
+    <a href="/alugar" class="btn btn-primary">Alugar</a>
   </div>
 </div>
 </div>
@@ -108,57 +171,52 @@ Marca: Ultra Bikes</p>
   <img src="https://static.netshoes.com.br/produtos/bicicleta-triciclo-luxo-aro-26-completo-com-21-marchas/18/2VR-0002-018/2VR-0002-018_zoom1.jpg?ts=1621972937&" class="card-img-top" alt="volcan">
   <div class="card-body">
     <h5 class="card-title">Bicicleta Triciclo Luxo</h5>
-    <p class="card-text">Nome: Bicicleta Triciclo Luxo<br>
+    <p class="card-text">Marca: CASA DO CICLISTA<br>
 Gênero: Unissex<br>
-Modalidade: Passeio<br>
 Aro: 26<br>
 Marchas: 21<br>
 Suspensão: Sem Suspensão<br>
-Indicado para: Praticante<br>
-Marca: CASA DO CICLISTA</p>
-    <a href="#" class="btn btn-primary">Alugar</a>
+Modalidade: Passeio<br></p>
+    <a href="/alugar" class="btn btn-primary">Alugar</a>
   </div>
 </div><div class="card" style="width: 18rem;">
   <img src="https://static.netshoes.com.br/produtos/bicicleta-aro-29-wny-freio-a-disco-21-marchas/06/W61-0005-006/W61-0005-006_zoom1.jpg?" alt="Status">
   <div class="card-body">
     <h5 class="card-title"> Bicicleta Aro 29 Wny</h5>
-    <p class="card-text">Nome: Bicicleta Aro 29 Wny<br>
+    <p class="card-text">Marca: WNY
 Gênero: Unissex<br>
-Modalidade: Passeio<br>
 Aro: 29<br>
 Marchas: 21<br>
 Suspensão: Dianteira<br>
-Marca: WNY</p>
-    <a href="#" class="btn btn-primary">Alugar</a>
+Modalidade: Passeio<br>
+</p>
+    <a href="/alugar" class="btn btn-primary">Alugar</a>
   </div>
 </div>
 <div class="card" style="width: 18rem;">
   <img src="https://static.netshoes.com.br/produtos/bicicleta-dobravel-pliage-plus-two-dogs-aro-20-shimano-7v/30/K81-0227-030/K81-0227-030_zoom1.jpg?" class="card-img-top" alt="Beach">
   <div class="card-body">
     <h5 class="card-title">Bicicleta Dobrável Pliage Plus</h5>
-    <p class="card-text">Nome: Bicicleta Dobrável Pliage Plus<br>
+    <p class="card-text">Marca: Two Dogs<br>
 Gênero: Masculino<br>
-Modalidade: Dobrável<br>
 Aro: 20<br>
 Marchas: 21<br>
 Suspensão: Sem Suspensão<br>
-Marca: Two Dogs</p>
-    <a href="#" class="btn btn-primary">Alugar</a>
+Modalidade: Dobrável<br></p>
+    <a href="/alugar" class="btn btn-primary">Alugar</a>
   </div>
 </div><div class="card" style="width: 18rem;">
   <img src="https://static.netshoes.com.br/produtos/bicicleta-eletrica-mormaii-mini-articulada/16/0ZI-1848-016/0ZI-1848-016_zoom1.jpg?" alt="spaceline 2">
   <div class="card-body">
     <h5 class="card-title">Bicicleta eletrica Mormaii</h5>
-    <p class="card-text">Nome: Bicicleta eletrica Mormaii<br>
+    <p class="card-text">Marca: Mormaii<br>
 Gênero: Unissex<br>
-Modalidade: Dobrável<br>
 Aro: 12<br>
 Marchas: Sem marcha<br>
 Suspensão: Traseira<br>
-Indicado para: Praticante<br>
-Marca: Mormaii<br>
+Modalidade: Dobrável<br>
  </p>
-    <a href="#" class="btn btn-primary">Alugar</a>
+    <a href="/alugar" class="btn btn-primary">Alugar</a>
   </div>
 </div>
 </div>
