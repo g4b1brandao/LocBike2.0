@@ -317,3 +317,10 @@ a1{
   font-size: 25px;
 
 }
+.container img bike{
+    max-width:625px;
+    max-height:625px;
+    width: auto;
+    height: auto;
+    object-fit: fill;
+}

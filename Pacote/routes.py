@@ -52,7 +52,7 @@ def cadastro():
 
             db.session.add(novo)
             db.session.commit()
-            novo.usuario_id = current_user.id
+
             return redirect('/login')
     # quando for GET enviar o template.
     return render_template("cadastro.html")
@@ -82,10 +82,6 @@ def login_tent ():
 @login_required
 def cadastrodebicicletas():
     if request.method == 'POST':
-        enderecoderetirada = request.form ['Address']
-        cidade = request.form ['City']
-        estado = request.form ['State']
-        cep = request.form ['CEP']
         nomedabicicleta = request.form ['Model']
         modalidade = request.form ['Modality']
         genero = request.form ['Gender']
@@ -112,10 +108,6 @@ def cadastrodebicicletas():
              file.save(os.path.join(app.config['UPLOAD_FOLDER'],img_bicicleta))
 
         novo = cadastrodebikes()
-        novo.Address = enderecoderetirada
-        novo.City =  cidade
-        novo.State = estado
-        novo.CEP = cep
         novo.Model = nomedabicicleta
         novo.Modality = modalidade
         novo.Gender = genero
@@ -133,6 +125,115 @@ def cadastrodebicicletas():
 
         return redirect('/catalogo')
     return render_template("cadastrodebicicletas.html")
+
+
+@app.route('/alugarbicicleta', methods=['POST'])
+@login_required
+def alugarbicicleta():
+        enderecodeentrega = request.form ['Address']
+        cidade = request.form ['City']
+        estado = request.form ['State']
+        cep = request.form ['CEP']
+        DataRetirada = request.form ['DataRetirada']
+        HoraRetirada = request.form ['HoraRetirada']
+        DataDevolucao = request.form ['DataDevoluçao']
+        HoraDevolucao= request.form ['HoraDevoluçao']
+
+
+        novo = alugueldebikes()
+        novo.Address = enderecodeentrega
+        novo.City =  cidade
+        novo.State = estado
+        novo.CEP = cep
+        novo.DataRetirada = DataRetirada
+        novo.HoraRetirada = HoraRetirada
+        novo.DataDevolucao =  DataDevolucao
+        novo.HoraDevolucao = HoraDevolucao
+        novo.id_cadastrodebikes = current_user.id
+
+
+
+        db.session.add(novo)
+        db.session.commit()
+
+
+        return redirect('/catalogo')
+        return render_template('alugar.html')
+
+
+@app.route('/alugar/<int:id>', methods=['GET', 'POST'])
+@login_required
+def alugar(id):
+
+    if request.method == 'POST':
+        DataRetirada = request.form ['DataRetirada']
+        HoraRetirada = request.form ['HoraRetirada']
+        DataDevolucao = request.form ['DataDevoluçao']
+        HoraDevolucao= request.form ['HoraDevoluçao']
+
+
+        novo = alugueldebikes()
+        novo.DataRetirada = DataRetirada
+        novo.HoraRetirada = HoraRetirada
+        novo.DataDevolucao =  DataDevolucao
+        novo.HoraDevolucao = HoraDevolucao
+        novo.id_cadastrodebikes = current_user.id
+
+
+        db.session.add(novo)
+        db.session.commit()
+
+
+        return redirect('/catalogo')
+    b = cadastrodebikes.query.get(id)
+    return render_template('alugar.html', bicicleta = b)
+
+@app.route('/atualizar', methods=["GET", 'POST'])
+@login_required
+def atualizar():
+    if request.method == 'GET':
+         return render_template("atualizar.html")
+    novo_nome = request.form ['nome_novo']
+    novo_sobrenome = request.form ['sobrenome_novo']
+    novo_email = request.form ['email_novo']
+    nova_senha = request.form ['senha_nova']
+    senha_inserida = request.form ['senha_atual']
+
+    quem = usuario.query.get(current_user.id)
+
+    if (quem.password==senha_inserida):
+
+        if(novo_nome!=""):
+            quem.name = novo_nome
+            db.session.add(quem)
+            db.session.commit()
+
+        if(novo_sobrenome!=""):
+            quem.lastname = novo_sobrenome
+            db.session.add(quem)
+            db.session.commit()
+
+        if(novo_email!=""):
+            quem.email = novo_email
+            db.session.add(quem)
+            db.session.commit()
+
+        if(nova_senha!=""):
+            quem.password = nova_senha
+            db.session.add(quem)
+            db.session.commit()
+        return redirect ('/atualizar')
+
+    else:
+        erro = "Senha inválida"
+        return render_template('catalogo.html', erro = erro)
+
+
+@app.route('/bikescadastradas', methods=['GET'])
+def ver_bikes_cadastradas():
+	bicicletas = cadastrodebikes.query.filter_by(id_usuario = current_user.id).all()
+	return render_template('bikescadastradas.html', bicicletas = bicicletas)
+
 
 
 
@@ -155,32 +256,6 @@ def bikesesportivas():
 def barralateral():
        return render_template("barralateral.html")
 
-
-@app.route('/alugar', methods=['GET', 'POST'])
-@login_required
-def alugar():
-     if request.method == 'POST':
-        DataRetirada = request.form ['DataRetirada']
-        HoraRetirada = request.form ['HoraRetirada']
-        DataDevolucao = request.form ['DataDevoluçao']
-        HoraRetirada= request.form ['HoraRetirada']
-
-
-        novo = alugueldebikes()
-        novo.DataRetirada = DataRetirada
-        novo.HoraRetirada = HoraRetirada
-        novo.DataDevolucao =  DataDevolucao
-        novo.HoraRetirada = HoraRetirada
-
-        novo.id_cadastrodebikes = current_user.id
-
-
-        db.session.add(novo)
-        db.session.commit()
-
-        return redirect('/catalogo')
-
-     return render_template("alugar.html")
 
 
 @app.route('/logout')

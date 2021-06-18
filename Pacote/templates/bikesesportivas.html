@@ -1,8 +1,10 @@
 {% extends 'base.html' %}
 
 {% block assunto %}
+   <meta charset="utf-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="/static/css/style.css">
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 {% endblock %}
 
 {% block titulo %}LocBike{% endblock %}
@@ -57,9 +59,9 @@
         <!-- Menu -->
         <ul>
 
-   <li><a href="/bikescasuais">Suas bikes alugadas</a></li>
-    <li><a href="/bikesesportivas">Suas bikes cadastradas</a></li>
-     <li><a href="/bikesdepasseios">Atualizar seus dados</a></li>
+   <li><a href="#">Suas bikes alugadas</a></li>
+    <li><a href="/bikescadastradas">Suas bikes cadastradas</a></li>
+     <li><a href="/atualizar">Atualizar seus dados</a></li>
      <br>
           <br>
                <br>
@@ -71,21 +73,6 @@
                                        <br>
                                          <br>
                                            <br>
-                                             <br>
-                                               <br>
-                                                 <br>
-                                                   <br>
-                                                     <br
-                                                     <br>
-                                                       <br>
-                                                         <br>
-                                                           <br>
-                                                             <br>
-
-
-
-
-
       <li><a class="nav-link active" aria-current="page" href="/logout">SAIR</a></li>
   </ul>
 
@@ -118,7 +105,7 @@
              Marchas: 21<br>
              Suspensão: Dianteira<br>
              Modalidade:Passeio<br></p>
-    <a href="/alugar" class="btn btn-primary">Alugar</a>
+     <a href="#"  class="btn btn-primary">Alugar</a>
   </div>
 </div>
 <div class="card" style="width: 18rem;">
@@ -131,7 +118,7 @@ Aro: 29<br>
 Marchas: 21<br>
 Suspensão: Dianteira<br>
 Modalidade: Passeio<br></p>
-    <a href="/alugar" class="btn btn-primary">Alugar</a>
+    <a href="#"  class="btn btn-primary">Alugar</a>
   </div>
 </div>
 <div class="card" style="width: 18rem;">
@@ -144,7 +131,7 @@ Modalidade: Passeio<br>
 Marchas: 27<br>
 Suspensão:Dianteira<br>
 Modalidade: Passeio<br></p>
-    <a href="/alugar" class="btn btn-primary">Alugar</a>
+   <a href="#"  class="btn btn-primary">Alugar</a>
   </div>
 </div><div class="card" style="width: 18rem;">
   <img src="https://static.netshoes.com.br/produtos/bicicleta-dropp-z3-aro-29-cambios-shimano-24v-cambio-tz-freio-a-disco-mecanico-com-suspensao/34/JWY-0168-234/JWY-0168-234_zoom2.jpg?ts=1600258877&?ims=544xhttps://static.netshoes.com.br/produtos/bicicleta-dropp-z3-aro-29-cambios-shimano-24v-cambio-tz-freio-a-disco-mecanico-com-suspensao/34/JWY-0168-234/JWY-0168-234_zoom2.jpg?ts=1600258877&?ims=1088x" class="card-img-top" alt="Dropz3">
@@ -156,7 +143,7 @@ Aro: 29<br>
 Marchas: 24<br>
 Suspensão: Dianteira<br>
 Modalidade: Passeio<br></p>
-    <a href="/alugar" class="btn btn-primary">Alugar</a>
+     <a href="#"  class="btn btn-primary">Alugar</a>
   </div>
 </div>
 </div>
@@ -177,7 +164,7 @@ Aro: 29<br>
 Marchas: 21<br>
 Suspensão: Dianteira<br>
 Modalidade: Passeio<br></p>
-    <a href="/alugar" class="btn btn-primary">Alugar</a>
+     <a href="#"  class="btn btn-primary">Alugar</a>
   </div>
 </div><div class="card" style="width: 18rem;">
   <img src="https://static.netshoes.com.br/produtos/bicicleta-aro-26-status-lenda-com-suspensao/14/W60-0036-014/W60-0036-014_zoom1.jpg?ts=1591278440&" alt="Status">
@@ -189,7 +176,7 @@ Aro: 26<br>
 Marchas: 18<br>
 Suspensão: Dianteira<br>
 Modalidade: Passeio<br></p>
-    <a href="/alugar" class="btn btn-primary">Alugar</a>
+   <a href="#"  class="btn btn-primary">Alugar</a>
   </div>
 </div>
 <div class="card" style="width: 18rem;">
@@ -202,7 +189,7 @@ Aro: 26<br>
 Marchas: 7<br>
 Suspensão: Sem Suspensão<br>
 Modalidade: Passeio<br></p>
-    <a href="/alugar" class="btn btn-primary">Alugar</a>
+    <a href="#"  class="btn btn-primary">Alugar</a>
   </div>
 </div><div class="card" style="width: 18rem;">
   <img src="https://static.netshoes.com.br/produtos/bicicleta-29-spaceline-cambio-gta-27-marchas-freios-hidraulicos-aluminio-cubo-k7/94/PDS-0051-794/PDS-0051-794_zoom1.jpg?ts=1597337660&" alt="spaceline 2">
@@ -214,13 +201,10 @@ Aro: 29<br>
 Marchas: 27<br>
 Suspensão: Dianteira<br>
 Modalidade: Passeio<br> </p>
-    <a href="/alugar" class="btn btn-primary">Alugar</a>
+    <a href="#"  class="btn btn-primary">Alugar</a>
   </div>
 </div>
 </div>
 </div>
-{% for bicicleta in dados %}
-{{bicicleta.id}}
-{% endfor %}
 
 {% endblock %}
